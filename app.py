@@ -9,7 +9,9 @@ credentials = Credentials.from_service_account_info(google_secrets)
 
 llm = VertexAI(model_name='text-bison@001', credentials=credentials)
 
-user_input_url = st.text_input("Enter the RSS feed URL:", "https://www.bleepingcomputer.com/feed/")
+st.header("RSS Feed Summaries")
+
+user_input_url = st.text_input("Enter the RSS feed URL to get summaries of articles:", "https://www.bleepingcomputer.com/feed/")
 st.markdown('')
 
 params = {
