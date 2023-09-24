@@ -1,9 +1,11 @@
 from langchain.document_loaders import RSSFeedLoader
 import streamlit as st
 from langchain.llms import VertexAI
-import google.auth
+from google.oauth2.service_account import Credentials
 
-credentials, project_id = google.auth.default()
+# Load the credentials from Streamlit secrets
+google_secrets = st.secrets["google"]
+credentials = Credentials.from_service_account_info(google_secrets)
 
 llm = VertexAI(model_name='text-bison@001', credentials=credentials)
 
