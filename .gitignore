@@ -1,2 +1,2 @@
 .vscode
-.streamlit
+.streamlit/secrets.toml
