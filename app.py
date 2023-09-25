@@ -20,13 +20,17 @@ def load_and_process_data(url, llm, params):
     with st.spinner("Loading content..."):
     
         try:
-            loader = RSSFeedLoader(urls=[url])
+            loader = RSSFeedLoader(urls=[url], continue_on_failure=True)
             data = loader.load()
+            counter = 0
             for item in data:
+                if counter >= 10:
+                    break
                 content += f"### {item.metadata['title']}\n"
                 prompt = f"Summarize the following article in about 3 to 4 lines:\n{item.page_content}"
                 content += f" {llm(prompt, **params)}\n"
-        except Exception as e:
+                counter += 1
+        except Exception as e:                
                 st.error(f"Error fetching {url}, Pleae try again later.")        
         return content
 
