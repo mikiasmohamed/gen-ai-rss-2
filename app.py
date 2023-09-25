@@ -5,8 +5,6 @@ from google.oauth2.service_account import Credentials
 import validators
 import logging
 
-st.write(st.config.get_option("server.enableCORS"))
-
 def load_credentials():
     try:
         google_secrets = st.secrets["google"]
