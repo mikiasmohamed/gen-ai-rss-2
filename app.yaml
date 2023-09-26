@@ -1,0 +1,16 @@
+runtime: python
+env: flex
+
+entrypoint: streamlit run --server.port=8080 --server.address=0.0.0.0 --server.enableCORS=false --server.enableWebsocketCompression=false --server.enableXsrfProtection=false --server.headless=true app.py
+
+runtime_config:
+  operating_system: "ubuntu22"
+  python_version: "3.11"
+
+resources:
+  cpu: 2
+  memory_gb: 2
+  disk_size_gb: 10
+
+network:
+  session_affinity: true
